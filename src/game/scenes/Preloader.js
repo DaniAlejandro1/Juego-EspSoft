@@ -19,10 +19,10 @@ export class Preloader extends Scene{
             '/assets/background/Background.png'
         
         )
-
+        
         this.load.image(
             BACKGROUND_ASSETS_KEYS.FLOOR,
-            '/assets/background/Layer_0001_8.png'
+            '/assets/background/Layer_0000_9.png'
         )
         
 
@@ -36,10 +36,10 @@ export class Preloader extends Scene{
             CHARACTER_ASSETS_KEYS.FIRE_WARRIOR,
             '/assets/character/Fire_Warrior/Fire_Warrior/Fire_Warrior-Sheet.png'
         )
+
     }
     create(){
-        this.add.image(this.scale.width/2,this.scale.height/5,BACKGROUND_ASSETS_KEYS.FOREST).setScale(1.6)
-        this.add.rectangle(0,0,200,200,0x0,1)
-       
+        this.scene.start(SCENE_KEYS.FIGHT_SCENE)
+    
     }
 }
