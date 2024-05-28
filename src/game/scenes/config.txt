@@ -1,0 +1,9 @@
+type: Phaser.CANVAS,
+pixelArt: False,
+scale:{
+    parent: 'game-container',
+    width: 1024,
+    heigth: 576,
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH
+}
