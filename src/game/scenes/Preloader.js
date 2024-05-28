@@ -1,4 +1,6 @@
 import { Scene } from 'phaser';
+import { FightScene } from './FightScene';
+import { MainMenu } from './MainMenu';
 
 export class Preloader extends Scene
 {

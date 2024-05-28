@@ -23,6 +23,10 @@ export class MainMenu extends Scene
         }).setDepth(100).setOrigin(0.5);
         
         EventBus.emit('current-scene-ready', this);
+
+        this.add.rectangle(100,200,100,100,'red',1).setInteractive().on('pointerdown', (()=>{
+            this.scene.run('FightScene')            
+        }))
     }
 
     changeScene ()
@@ -33,7 +37,7 @@ export class MainMenu extends Scene
             this.logoTween = null;
         }
 
-        this.scene.start('Game');
+        this.scene.start('FightScene');
     }
 
     moveLogo (vueCallback)
