@@ -19,7 +19,14 @@ const config = {
         MainMenu,
         Game,
         GameOver
-    ]
+    ],
+    physics: {
+        default: 'arcade',
+        arcade:{
+            gravity: {y: 0},
+            debug: true
+        }
+    }
 };
 
 const StartGame = (parent) => {
