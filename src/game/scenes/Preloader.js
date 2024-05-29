@@ -27,17 +27,19 @@ export class Preloader extends Scene{
         
 
         // Character assets
-        this.load.image(
-            CHARACTER_ASSETS_KEYS.VIKING,
-            '/assets/character/Viking/Viking-Sheet.png'
-        )
+        
 
         this.load.image(
-            CHARACTER_ASSETS_KEYS.FIRE_WARRIOR,
+            CHARACTER_ASSETS_KEYS.FIRE_WARRIOR.IDLE,
             '/assets/character/Fire_Warrior/Fire_Warrior/Fire_Warrior-Sheet.png'
         )
 
+        this.load.spritesheet(
+            CHARACTER_ASSETS_KEYS.VIKING.IDLE,
+            'public/assets/character/Viking/States/Viking-Sheet-Idle.png',
+            {frameWidth:31, frameHeight: 45,spacing: 84})
     }
+
     create(){
         this.scene.start(SCENE_KEYS.FIGHT_SCENE)
     
