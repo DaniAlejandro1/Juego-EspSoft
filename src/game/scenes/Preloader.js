@@ -53,7 +53,15 @@ export class Preloader extends Scene{
         this.load.spritesheet(
             CHARACTER_ASSETS_KEYS.VIKING.ATTACK,
             'public/assets/character/Viking/States/Viking-Sheet-attack.png',
-            {frameWidth:47, frameHeight: 46, spacing: 0}
+            {frameWidth:47, frameHeight: 46}
+        )
+
+        // Jump Assets
+        this.load.spritesheet(
+            CHARACTER_ASSETS_KEYS.VIKING.JUMP,
+            'public/assets/character/Viking/States/Viking-Sheet-Jump.png',
+            {frameWidth: 46, frameHeight: 46}
+
         )
     }
 

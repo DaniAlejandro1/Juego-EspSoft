@@ -17,7 +17,12 @@ export class FightScene extends Scene{
         this.add.image(this.scale.width/2,0,BACKGROUND_ASSETS_KEYS.FOREST).setScale(2.1)
         
         
-        
+        this.attackHitbox = this.add.rectangle(0, 0, 80, 20, 0xff0000, 0.5);
+        this.physics.add.existing(this.attackHitbox);
+        this.attackHitbox.body.setAllowGravity(false);
+
+        this.attackHitbox.destroy()
+
         
         
         
@@ -55,11 +60,19 @@ export class FightScene extends Scene{
         
         this.input.keyboard.on('keydown-G',()=>{
             
-            this.viking.attact()
+            this.viking.attack()
+           
+        })
+
+        this.input.keyboard.on('keydown-W',()=>{
+            
+            this.viking.jump()
+           
         })
         
     }
 
+    
     update(){
        
             
