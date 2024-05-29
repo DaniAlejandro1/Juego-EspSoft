@@ -35,12 +35,24 @@ export class FightScene extends Scene{
         this.add.image(this.scale.width/2,0,BACKGROUND_ASSETS_KEYS.FLOOR).setScale(2.1)
         
         this.input.keyboard.on('keydown-D',()=>{
+            this.viking.ORIENTATION = 'left'
             this.viking.run()
         })
 
         this.input.keyboard.on('keyup-D',()=>{
             this.viking.idle()
         })
+
+        this.input.keyboard.on('keydown-A',()=>{
+            this.viking.ORIENTATION = 'right'
+            this.viking.run()
+        })
+
+        this.input.keyboard.on('keyup-A',()=>{
+            this.viking.idle()
+        })
+
+        
         this.input.keyboard.on('keydown-G',()=>{
             
             this.viking.attact()
