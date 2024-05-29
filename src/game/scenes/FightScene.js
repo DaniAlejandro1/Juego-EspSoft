@@ -41,7 +41,11 @@ export class FightScene extends Scene{
         this.input.keyboard.on('keyup-D',()=>{
             this.viking.idle()
         })
-       
+        this.input.keyboard.on('keydown-G',()=>{
+            
+            this.viking.attact()
+        })
+        
     }
 
     update(){

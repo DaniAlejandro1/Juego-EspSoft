@@ -48,6 +48,13 @@ export class Preloader extends Scene{
             CHARACTER_ASSETS_KEYS.VIKING.RUN,
             'public/assets/character/Viking/States/Viking-Sheet-Running.png',
             {frameWidth:35, frameHeight: 45,spacing: 80})
+
+        // Attact Assets
+        this.load.spritesheet(
+            CHARACTER_ASSETS_KEYS.VIKING.ATTACK,
+            'public/assets/character/Viking/States/Viking-Sheet-attack.png',
+            {frameWidth:47, frameHeight: 46, spacing: 0}
+        )
     }
 
     create(){
