@@ -28,16 +28,26 @@ export class Preloader extends Scene{
 
         // Character assets
         
-
+        // Fire Warrior 
         this.load.image(
             CHARACTER_ASSETS_KEYS.FIRE_WARRIOR.IDLE,
             '/assets/character/Fire_Warrior/Fire_Warrior/Fire_Warrior-Sheet.png'
         )
 
+
+        // Viking
+        
+        // Idle Sprite
         this.load.spritesheet(
             CHARACTER_ASSETS_KEYS.VIKING.IDLE,
             'public/assets/character/Viking/States/Viking-Sheet-Idle.png',
             {frameWidth:31, frameHeight: 45,spacing: 84})
+        
+        // Run Sprite
+        this.load.spritesheet(
+            CHARACTER_ASSETS_KEYS.VIKING.RUN,
+            'public/assets/character/Viking/States/Viking-Sheet-Running.png',
+            {frameWidth:35, frameHeight: 45,spacing: 80})
     }
 
     create(){
