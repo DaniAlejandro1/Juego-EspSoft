@@ -6,7 +6,7 @@ import WikiView from '../view/WikiView.vue'
 
 const routes = [
   {
-    name: 'landingPage',
+    name: 'landing',
     path: '/',
     component: LandingPage
   },
