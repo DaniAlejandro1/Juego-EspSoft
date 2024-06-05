@@ -19,3 +19,9 @@ export const CHARACTER_ASSETS_KEYS = Object.freeze({
     }
 
 })
+
+export const HEALTHBAR_ASSETS = Object.freeze({
+    FONDO: 'FONDO',
+    RELLENO: 'RELLENO' 
+
+})

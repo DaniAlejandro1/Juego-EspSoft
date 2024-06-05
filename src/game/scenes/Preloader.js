@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import { Scene } from "phaser";
 import { SCENE_KEYS } from "./scene-keys";
-import { BACKGROUND_ASSETS_KEYS, CHARACTER_ASSETS_KEYS } from "../../../public/assets/assets-keys";
+import { BACKGROUND_ASSETS_KEYS, CHARACTER_ASSETS_KEYS, HEALTHBAR_ASSETS } from "../../../public/assets/assets-keys";
 
 export class Preloader extends Scene{
     constructor(){
@@ -25,6 +25,20 @@ export class Preloader extends Scene{
             '/assets/background/Layer_0000_9.png'
         )
         
+
+        // HealtBar
+
+        // Fondo
+        this.load.image( 
+            HEALTHBAR_ASSETS.FONDO,
+            '/assets/health_bar/HealthBar.png'
+        )
+
+        // Relleno
+        this.load.image(
+            HEALTHBAR_ASSETS.RELLENO,
+            '/assets/health_bar/Health.png'
+        )
 
         // Character assets
         
@@ -67,6 +81,5 @@ export class Preloader extends Scene{
 
     create(){
         this.scene.start(SCENE_KEYS.FIGHT_SCENE)
-    
     }
 }

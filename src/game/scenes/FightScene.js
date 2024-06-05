@@ -16,17 +16,6 @@ export class FightScene extends Scene{
     create(){
         this.add.image(this.scale.width/2,0,BACKGROUND_ASSETS_KEYS.FOREST).setScale(2.1)
         
-        
-        this.attackHitbox = this.add.rectangle(0, 0, 80, 20, 0xff0000, 0.5);
-        this.physics.add.existing(this.attackHitbox);
-        this.attackHitbox.body.setAllowGravity(false);
-
-        this.attackHitbox.destroy()
-
-        
-        
-        
-        
         this.piso = this.physics.add.staticBody(0,this.scale.height-30,this.scale.width,20)
         
 
@@ -38,6 +27,8 @@ export class FightScene extends Scene{
         this.physics.add.collider(this.viking.sprite,this.piso)
         this.physics.add.collider(this.viking2.sprite,this.piso)
         
+        this.physics.add.overlap(this.viking.attackHitbox,this.viking2.attackHitbox)
+
         this.add.image(this.scale.width/2,0,BACKGROUND_ASSETS_KEYS.FLOOR).setScale(2.1)
         
         this.input.keyboard.on('keydown-D',()=>{
@@ -63,12 +54,43 @@ export class FightScene extends Scene{
         this.input.keyboard.on('keydown-G',()=>{
             
             this.viking.attack()
+            if(this.physics.collide(this.viking.attackHitbox,this.viking2.sprite)){
+                this.viking2.recibirDanio(this.viking.damage)
+            }
            
         })
 
-        this.input.keyboard.on('keydown-M',()=>{
+
+
+        // Movimientos del segundo personaje
+        this.input.keyboard.on('keydown-LEFT',()=>{
+            this.viking2.ORIENTATION = 'left'
+            this.viking2.run()
             
-            this.viking.recibirDanio(this.viking2.damage)
+        })
+
+        this.input.keyboard.on('keyup-LEFT',()=>{
+            this.viking2.idle()
+        })
+
+        this.input.keyboard.on('keydown-RIGHT',()=>{
+            this.viking2.ORIENTATION = 'right'
+            this.viking2.run()
+        })
+
+        this.input.keyboard.on('keyup-RIGHT',()=>{
+            this.viking2.idle()
+        })
+
+        
+
+        this.input.keyboard.on('keydown-M',()=>{
+
+            this.viking2.attack()
+            if (this.physics.overlap(this.viking.sprite,this.viking2.attackHitbox)){
+
+                this.viking.recibirDanio(this.viking2.damage)
+            }
            
         })
 

@@ -1,3 +1,4 @@
+import { HEALTHBAR_ASSETS } from "../../../../public/assets/assets-keys"
 
 
 
@@ -14,7 +15,12 @@ export class Character{
         this.damage = damage
         this.POSITION = position
         this.ORIENTATION = position
-        
+
+        let hitboxX = this.x + (this.ORIENTATION === 'right' ? -20 : 20);
+        let hitboxY = this.y;
+
+        this.attackHitbox = this.scene.add.rectangle(hitboxX, hitboxY, 140, 200, 0xff0000, 0);
+
         this.sprite = scene.physics.add.sprite(x, y, this.ASSET_KEY.IDLE).setScale(4);
         
         if(this.ORIENTATION == 'right'){
@@ -26,8 +32,8 @@ export class Character{
 
         this.sprite.play(this.ASSET_KEY.IDLE)
         this.speed = 270
-        this.health = 100
-        this.currentHealth = 100
+        this.health = health
+        this.currentHealth = currentHealth
         this.isRuning = false
         this.isAttacking = false
         this.isJumping = false
@@ -107,6 +113,8 @@ export class Character{
 
     run(){
 
+        if(this.POSITION == 'left'){
+
             if(!this.isRuning && !this.isAttacking){
                 this.isRuning = true
                 if(this.ORIENTATION === 'right' ){
@@ -121,6 +129,23 @@ export class Character{
                 this.sprite.play(this.ASSET_KEY.RUN)
                 
             }
+        }else{
+                if(!this.isRuning && !this.isAttacking){
+                this.isRuning = true
+                if(this.ORIENTATION === 'left' ){
+                    this.sprite.flipX = true
+                    this.sprite.setVelocityX(-this.speed)
+                }else{
+                    this.sprite.flipX = false
+                    this.sprite.setVelocityX(this.speed)
+                    
+                }
+    
+                this.sprite.play(this.ASSET_KEY.RUN)
+                
+            }
+        }
+
     }
 
     attack(){
@@ -144,41 +169,47 @@ export class Character{
         this.currentHealth -= danio;
         if (this.currentHealth < 0) this.currentHealth = 0;
         console.log("current health: " + this.currentHealth);
-        const newWidth = this.calcularAnchoBarra(this.currentHealth, this.health, 700);
-        this.scene.tweens.add({
-            targets: this.healthFill,
-            width: newWidth,
-            duration: 200,
-            ease: Phaser.Math.Easing.Sine.Out,
-            repeat: 0,
-        });
-
-        console.log("current health: " + this.currentHealth);
+    
+        // Calcular el nuevo ancho basado en la salud actual
+        let newWidth = this.calcularAnchoBarra(this.currentHealth, this.health, 487); // 487 es el ancho máximo de la barra de salud
+        console.log('new width: ' + newWidth);
+        this.healthFill.displayWidth = newWidth; // Actualizar el ancho de la barra de salud
     }
-
+    
     calcularAnchoBarra(currentHealth, totalHealth, maxWidth) {
         return (currentHealth / totalHealth) * maxWidth;
     }
+    
+
 
 
     createHealthBar(scene) {
-        const barWidth = 100;
-        const barHeight = 40;
-        const barX = 100;
-        const barY = 20;
+        if (this.POSITION === 'left'){
 
-        // Fondo de la barra de salud
-        this.healthbar = scene.add.graphics();
-        this.healthbar.fillStyle(0xff0000, 0.3);
-        this.healthbar.fillRect(barX, barY, barWidth, barHeight);
-
-        // Relleno de la barra de salud
-        this.healthFill = scene.add.graphics();
-        this.healthFill.fillStyle(0x00ff00, 1);
-        this.healthFill.fillRect(barX, barY, barWidth, barHeight);
+            // Contorno de la barra de salud
+            this.healthBar = scene.add.image(100, 50, HEALTHBAR_ASSETS.FONDO).setOrigin(0, 0);
+            this.healthBar.displayWidth = 610;
+            this.healthBar.displayHeight = 30;
         
+            // Relleno de la barra de salud
+            this.healthFill = scene.add.image(161, 65, HEALTHBAR_ASSETS.RELLENO).setOrigin(0, 0.5);
+            this.healthFill.displayWidth = 487; // Ancho máximo inicial
+            this.healthFill.displayHeight = 13;
         
+        } else{
+            // Contorno de la barra de salud
+            this.healthBar = scene.add.image(950, 50, HEALTHBAR_ASSETS.FONDO).setOrigin(0, 0);
+            this.healthBar.displayWidth = 610;
+            this.healthBar.displayHeight = 30;
+        
+            // Relleno de la barra de salud
+            this.healthFill = scene.add.image(1500, 65, HEALTHBAR_ASSETS.RELLENO).setOrigin(1, 0.5);
+            this.healthFill.displayWidth = 487; // Ancho máximo inicial
+            this.healthFill.displayHeight = 13;
+        }
     }
+
+        
 
 
     
