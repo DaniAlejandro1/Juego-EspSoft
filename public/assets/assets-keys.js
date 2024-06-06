@@ -8,8 +8,10 @@ export const CHARACTER_ASSETS_KEYS = Object.freeze({
         IDLE: 'VIKING_IDLE',
         RUN: 'VIKING_RUN',
         ATTACK: 'VIKING_ATTACT',
-        JUMP: 'VIKING_JUMP'
-    
+        JUMP: 'VIKING_JUMP',
+        RECIVE_ATTACK: 'RECIVE-ATTACK',
+        DEFEATED: 'DEFEATED'
+        
     },
         
 

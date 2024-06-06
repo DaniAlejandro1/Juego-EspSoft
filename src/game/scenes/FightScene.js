@@ -27,35 +27,45 @@ export class FightScene extends Scene{
         this.physics.add.collider(this.viking.sprite,this.piso)
         this.physics.add.collider(this.viking2.sprite,this.piso)
         
-        this.physics.add.overlap(this.viking.attackHitbox,this.viking2.attackHitbox)
+        
 
         this.add.image(this.scale.width/2,0,BACKGROUND_ASSETS_KEYS.FLOOR).setScale(2.1)
         
         this.input.keyboard.on('keydown-D',()=>{
-            this.viking.ORIENTATION = 'left'
-            this.viking.run()
+            if(!this.viking.isDead){
+
+                this.viking.ORIENTATION = 'left'
+                this.viking.run()
+            }
             
         })
 
         this.input.keyboard.on('keyup-D',()=>{
+            if(!this.viking.isDead)
             this.viking.idle()
         })
 
         this.input.keyboard.on('keydown-A',()=>{
-            this.viking.ORIENTATION = 'right'
-            this.viking.run()
+            if(!this.viking.isDead){
+                this.viking.ORIENTATION = 'right'
+                this.viking.run()
+
+            }
         })
 
         this.input.keyboard.on('keyup-A',()=>{
+            if(!this.viking.isDead)
             this.viking.idle()
         })
 
         
         this.input.keyboard.on('keydown-G',()=>{
-            
-            this.viking.attack()
-            if(this.physics.collide(this.viking.attackHitbox,this.viking2.sprite)){
-                this.viking2.recibirDanio(this.viking.damage)
+            if(!this.viking.isDead){
+
+                this.viking.attack()
+                if(this.physics.collide(this.viking.attackHitbox,this.viking2.sprite)){
+                    this.viking2.recibirDanio(this.viking.damage)
+                }
             }
            
         })
@@ -64,32 +74,44 @@ export class FightScene extends Scene{
 
         // Movimientos del segundo personaje
         this.input.keyboard.on('keydown-LEFT',()=>{
-            this.viking2.ORIENTATION = 'left'
-            this.viking2.run()
+
+            if(!this.viking2.isDead){
+
+                this.viking2.ORIENTATION = 'left'
+                this.viking2.run()
+            }
             
         })
 
         this.input.keyboard.on('keyup-LEFT',()=>{
-            this.viking2.idle()
+            if(!this.viking2.isDead)this.viking2.idle()
         })
 
         this.input.keyboard.on('keydown-RIGHT',()=>{
-            this.viking2.ORIENTATION = 'right'
-            this.viking2.run()
+            if(!this.viking2.isDead){
+
+                this.viking2.ORIENTATION = 'right'
+                this.viking2.run()
+            }
         })
 
         this.input.keyboard.on('keyup-RIGHT',()=>{
-            this.viking2.idle()
+            if(!this.viking2.isDead){
+
+                this.viking2.idle()
+            }
         })
 
         
 
         this.input.keyboard.on('keydown-M',()=>{
+            if(!this.viking2.isDead){
 
-            this.viking2.attack()
-            if (this.physics.overlap(this.viking.sprite,this.viking2.attackHitbox)){
-
-                this.viking.recibirDanio(this.viking2.damage)
+                this.viking2.attack()
+                if (this.physics.overlap(this.viking.sprite,this.viking2.attackHitbox)){
+    
+                    this.viking.recibirDanio(this.viking2.damage)
+                }
             }
            
         })

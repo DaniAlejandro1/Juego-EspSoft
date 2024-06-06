@@ -8,7 +8,7 @@ export class Preloader extends Scene{
         super({
             key: SCENE_KEYS.PRELOAD_SCENE
         })
-        console.log(SCENE_KEYS.PRELOAD_SCENE)
+       
     }
 
     preload(){
@@ -75,6 +75,20 @@ export class Preloader extends Scene{
             CHARACTER_ASSETS_KEYS.VIKING.JUMP,
             'public/assets/character/Viking/States/Viking-Sheet-Jump.png',
             {frameWidth: 46, frameHeight: 46}
+        )
+
+        // Recive Attack
+        this.load.spritesheet(
+            CHARACTER_ASSETS_KEYS.VIKING.RECIVE_ATTACK,
+            '/assets/character/Viking/States/Viking-Sheet-ReciveAttack.png',
+            {frameWidth:35, frameHeight: 45}
+        )
+
+        // DEFEATED
+        this.load.spritesheet(
+            CHARACTER_ASSETS_KEYS.VIKING.DEFEATED,
+            '/assets/character/Viking/States/Viking-Sheet-Defeated.png',
+            {frameWidth: 55, frameHeight: 45}
 
         )
     }

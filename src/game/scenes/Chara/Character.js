@@ -30,7 +30,7 @@ export class Character{
         this.createAnimation(scene)
         this.createHealthBar(scene)
 
-        this.sprite.play(this.ASSET_KEY.IDLE)
+        this.idle()
         this.speed = 270
         this.health = health
         this.currentHealth = currentHealth
@@ -38,6 +38,7 @@ export class Character{
         this.isAttacking = false
         this.isJumping = false
         this.isIdle = true
+        this.isDead = false
     }
 
     createAnimation(scene){
@@ -49,7 +50,7 @@ export class Character{
         });
         scene.anims.create({
             key: this.ASSET_KEY.RUN,
-            frames: scene.anims.generateFrameNumbers(this.ASSET_KEY.RUN, {frames:[0,1,2,3,4,5,6,0,1,2,3,4,5]}),
+            frames: scene.anims.generateFrameNumbers(this.ASSET_KEY.RUN, {start: 0, end: 6}),
             frameRate: 14,
             repeat: -1
         });
@@ -63,14 +64,27 @@ export class Character{
         scene.anims.create({
             key: this.ASSET_KEY.JUMP,
             frames: scene.anims.generateFrameNumbers(this.ASSET_KEY.JUMP, { start: 0, end: 3 }),
-            frameRate: 1,
+            frameRate: 4,
             repeat: 0
         });
-        this.sprite.on('playAnimation',()=>{
-
+        
+        scene.anims.create({
+            key: this.ASSET_KEY.RECIVE_ATTACK,
+            frames: scene.anims.generateFrameNumbers(this.ASSET_KEY.RECIVE_ATTACK, { start: 0, end: 3 }),
+            frameRate: 12,
+            repeat: 0
         })
+
+        scene.anims.create({
+            key: this.ASSET_KEY.DEFEATED ,
+            frames: scene.anims.generateFrameNumbers(this.ASSET_KEY.DEFEATED, { start: 0, end: 11 }),
+            frameRate: 12,
+            repeat: 0
+        })
+
+
         this.sprite.on('animationcomplete', ()=>{
-            if(this.isAttacking && this.isRuning){
+            if(this.isAttacking && this.isRuning && !this.isDead){
                 this.attackHitbox.destroy()
                 this.isAttacking = false
                 this.isIdle = false
@@ -78,14 +92,16 @@ export class Character{
                 this.run()
             }
 
-            if(this.isAttacking && this.idle){
+            if(this.isAttacking && this.idle && !this.isDead){
                 this.attackHitbox.destroy()
                 this.isAttacking = false
                 this.isIdle = true
                 this.idle()
             }
+            if(!this.isDead){
+                this.idle()
+            }
 
-    
             
             
         });
@@ -125,7 +141,7 @@ export class Character{
                     this.sprite.setVelocityX(this.speed)
                     
                 }
-    
+                    
                 this.sprite.play(this.ASSET_KEY.RUN)
                 
             }
@@ -140,7 +156,7 @@ export class Character{
                     this.sprite.setVelocityX(this.speed)
                     
                 }
-    
+                
                 this.sprite.play(this.ASSET_KEY.RUN)
                 
             }
@@ -164,16 +180,33 @@ export class Character{
             
         }
     }
+
+    defeated(){
+        if(!this.isDead){
+
+            this.isDead = true        
+            this.playAnimation(this.ASSET_KEY.DEFEATED)
+        }
+    }
     
     recibirDanio(danio) {
+
         this.currentHealth -= danio;
-        if (this.currentHealth < 0) this.currentHealth = 0;
-        console.log("current health: " + this.currentHealth);
+        if (this.currentHealth <= 0) {
+            
+            this.currentHealth = 0
+            this.defeated()
+        }else{
+            
+            // Calcular el nuevo ancho basado en la salud actual
+            let newWidth = this.calcularAnchoBarra(this.currentHealth, this.health, 487); // 487 es el ancho máximo de la barra de salud
+            console.log('new width: ' + newWidth);
+            this.healthFill.displayWidth = newWidth; // Actualizar el ancho de la barra de salud
+            this.playAnimation(this.ASSET_KEY.RECIVE_ATTACK)
+            
+        }
+        
     
-        // Calcular el nuevo ancho basado en la salud actual
-        let newWidth = this.calcularAnchoBarra(this.currentHealth, this.health, 487); // 487 es el ancho máximo de la barra de salud
-        console.log('new width: ' + newWidth);
-        this.healthFill.displayWidth = newWidth; // Actualizar el ancho de la barra de salud
     }
     
     calcularAnchoBarra(currentHealth, totalHealth, maxWidth) {
