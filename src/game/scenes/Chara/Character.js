@@ -195,6 +195,11 @@ export class Character{
         if (this.currentHealth <= 0) {
             
             this.currentHealth = 0
+
+            let newWidth = this.calcularAnchoBarra(this.currentHealth, this.health, 487); // 487 es el ancho máximo de la barra de salud
+            console.log('new width: ' + newWidth);
+            this.healthFill.displayWidth = newWidth; 
+            
             this.defeated()
         }else{
             
