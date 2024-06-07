@@ -6,7 +6,7 @@
             <h1 class="title">Fury of Elements</h1>
         </div>
         <div>
-            <p>Fury of Elements es un juego de pelea 1v1 que enfrenta a dos guerreros legendarios en una épica batalla por el dominio elemental. En un bosque místico donde el fuego y el hielo chocan, los jugadores pueden elegir entre dos personajes únicos: Kaito, el samurái que controla el fuego, y Bjorn, el vikingo que empuña un hacha de hielo.</p>
+            <p>Fury of Elements es un juego de pelea 1v1 que enfrenta a diversos guerreros legendarios en épicas batallas por el dominio elemental. En un bosque místico donde el fuego, el hielo y otros elementos chocan, los jugadores pueden elegir entre múltiples personajes únicos, cada uno con sus propias habilidades y estilos de combate.</p>
             <hr>
         </div>
         <div v-if="estaLogeado">

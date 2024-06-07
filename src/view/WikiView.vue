@@ -6,7 +6,7 @@
         <div>
             <h1>Historia</h1>
             <hr>
-            <p>En un mundo donde la magia y la naturaleza se entrelazan, dos guerreros de tiempos y tierras distantes son convocados por fuerzas místicas a un bosque ancestral. Este bosque, conocido como el Bosque de los Eternos, es un lugar sagrado donde los elementos se manifiestan con una fuerza inigualable. Cada guerrero trae consigo el poder de un elemento primordial: el fuego y el hielo. Estos dos guerreros, un samurái con la habilidad de controlar el fuego y un vikingo con un hacha imbuida de hielo, deben enfrentarse en una batalla épica para determinar quién tiene el dominio sobre el Bosque de los Eternos y su energía elemental.</p>
+            <p>En un mundo donde la magia y la naturaleza se entrelazan, guerreros de tiempos y tierras distantes son convocados por fuerzas místicas a un bosque ancestral. Este bosque, conocido como el Bosque de los Eternos, es un lugar sagrado donde los elementos se manifiestan con una fuerza inigualable. Cada guerrero trae consigo el poder de un elemento primordial, ya sea fuego, hielo, tierra, agua, viento, o electricidad. Estos combatientes deben enfrentarse en épicas batallas para determinar quién tiene el dominio sobre el Bosque de los Eternos y su energía elemental.</p>
         </div>
         <div>
             <h1>Personajes</h1>
@@ -25,7 +25,7 @@
         <div>
             <h1>Bosque de los Eternos</h1>
             <hr>
-            <p>El Bosque de los Eternos es el campo de batalla donde Kaito y Bjorn se enfrentan. Este lugar está lleno de antiguos árboles gigantescos, cuyas raíces y ramas parecen estar vivas. La magia elemental es fuerte aquí, y tanto el fuego como el hielo reaccionan de maneras impredecibles, creando un entorno en constante cambio. El bosque es también el hogar de espíritus elementales que pueden interferir en la batalla, añadiendo un nivel extra de desafío.</p>
+            <p>El Bosque de los Eternos es el campo de batalla donde diversos guerreros se enfrentan. Este lugar está lleno de antiguos árboles gigantescos, cuyas raíces y ramas parecen estar vivas. La magia elemental es fuerte aquí, y los elementos como el fuego, el hielo, la tierra, y el viento reaccionan de maneras impredecibles, creando un entorno en constante cambio. El bosque es también el hogar de espíritus elementales que pueden interferir en las batallas, añadiendo un nivel extra de desafío para los combatientes.</p>
         </div>
     </div>
 </template>
