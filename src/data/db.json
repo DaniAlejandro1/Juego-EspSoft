@@ -1,19 +1,19 @@
 {
   "users": [
     {
-      "id": "a8a4",
-      "username": "juan",
-      "password": "1243"
-    },
-    {
       "id": "ceb9",
-      "username": "pepe",
+      "username": "Pepe",
       "password": "1243"
     },
     {
       "id": "8e5e",
       "username": "pepito",
       "password": "12431243"
+    },
+    {
+      "id": "9a79",
+      "username": "carlos",
+      "password": "1243"
     }
   ]
 }

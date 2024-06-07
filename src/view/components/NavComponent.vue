@@ -2,19 +2,21 @@
     <div>
         <nav class="navbar">
             <router-link to="/" class="nav-link">Inicio</router-link>
-            <router-link to="/wiki" class="nav-link">Wiki</router-link>  
-            <router-link to="/records" class="nav-link">Records</router-link> 
+            <router-link to="/wiki" class="nav-link">Wiki</router-link>
             <router-link to="/login" class="nav-link" v-if="!userStore.estaLogeado">Iniciar Sesion</router-link>
             <router-link to="/register" class="nav-link">Crear Cuenta</router-link> 
             <a @click="cerrarSesion" class="nav-link" v-if="userStore.estaLogeado">Cerrar Sesion</a>
+            <span v-if="userStore.estaLogeado" class="nombre">{{username}}</span>
         </nav>
     </div>
 </template>
 
 <script setup>
+    import { storeToRefs } from 'pinia';
     import { useUserStore } from '../../stores/userStore';
 
     const userStore = useUserStore();
+    const {username} = storeToRefs(userStore);
 
     const cerrarSesion = () => {
         userStore.logout();
@@ -43,5 +45,9 @@
     .nav-link:hover {
         background-color: #535353;
         border-radius: 4px;
+    }
+    .nombre {
+        font-size: 24px;
+        margin-left: 12px;
     }
 </style>
