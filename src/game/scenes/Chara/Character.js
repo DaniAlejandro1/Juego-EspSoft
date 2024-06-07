@@ -21,7 +21,7 @@ export class Character{
 
         this.attackHitbox = this.scene.add.rectangle(hitboxX, hitboxY, 140, 200, 0xff0000, 0);
 
-        this.sprite = scene.physics.add.sprite(x, y, this.ASSET_KEY.IDLE).setScale(4);
+        this.sprite = scene.physics.add.sprite(x, y, this.ASSET_KEY.IDLE).setScale(4).setCollideWorldBounds(true);
         
         if(this.ORIENTATION == 'right'){
             this.sprite.flipX = true
