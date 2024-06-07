@@ -10,7 +10,7 @@
             <hr>
         </div>
         <div v-if="userStore.estaLogeado">
-            <button class="play-btn">Jugar</button>
+            <button @click="jugar()" class="play-btn">Jugar</button>
         </div>
         <div v-else>
             <button class="login-btn" @click="goToLogin">Inicia Sesión para Jugar</button>
@@ -29,6 +29,9 @@
     const goToLogin = () => {
         router.push({ path: '/login' });
     };
+    const jugar = () => {
+        router.push({ path: '/game' });
+    }
 </script>
 
 <style scoped>
