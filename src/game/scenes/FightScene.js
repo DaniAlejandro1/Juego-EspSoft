@@ -20,8 +20,8 @@ export class FightScene extends Scene{
         
 
         
-        this.viking = new Character(this,200,this.scale.height-120,CHARACTER_ASSETS_KEYS.VIKING,100,100,10,'left');
-        this.viking2 = new Character(this,800,this.scale.height-120,CHARACTER_ASSETS_KEYS.VIKING,100,100,10,'right')
+        this.viking = new Character(this,300,this.scale.height-120,CHARACTER_ASSETS_KEYS.VIKING,100,100,10,'left');
+        this.viking2 = new Character(this,1400,this.scale.height-120,CHARACTER_ASSETS_KEYS.VIKING,100,100,10,'right')
 
 
         this.physics.add.collider(this.viking.sprite,this.piso)

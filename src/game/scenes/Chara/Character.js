@@ -232,6 +232,10 @@ export class Character{
 
     createHealthBar(scene) {
         if (this.POSITION === 'left'){
+            // Agrega el nombre del personaje ensima de la barra de vida
+            this.scene.add.text(110, 10,this.ASSET_KEY.NAME,{
+                fontSize: 30
+            })
 
             // Contorno de la barra de salud
             this.healthBar = scene.add.image(100, 50, HEALTHBAR_ASSETS.FONDO).setOrigin(0, 0);
@@ -244,6 +248,10 @@ export class Character{
             this.healthFill.displayHeight = 13;
         
         } else{
+            //  Agrega el nombre del personaje ensima de la barra de vida
+            this.scene.add.text(1450, 10,this.ASSET_KEY.NAME,{
+                fontSize: 30
+            })
             // Contorno de la barra de salud
             this.healthBar = scene.add.image(950, 50, HEALTHBAR_ASSETS.FONDO).setOrigin(0, 0);
             this.healthBar.displayWidth = 610;
