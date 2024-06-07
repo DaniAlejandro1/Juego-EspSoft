@@ -1,4 +1,4 @@
-import { HEALTHBAR_ASSETS } from "../../../../public/assets/assets-keys"
+import { CHARACTER_ASSETS_KEYS, HEALTHBAR_ASSETS } from "../../../../public/assets/assets-keys"
 
 
 
@@ -166,26 +166,41 @@ export class Character{
 
     attack(){
         if (!this.isAttacking){
+            if(this.ASSET_KEY === CHARACTER_ASSETS_KEYS.VIKING){
 
+                if(this.POSITION === 'right'){
+                    let hitboxY = this.sprite.y;
+                    let hitboxX = this.sprite.x + (this.ORIENTATION === 'right' ? 20 : -20);
+                    this.attackHitbox = this.scene.add.rectangle(hitboxX, hitboxY, 140, 200, 0xff0000, 0.1);
+                    this.scene.physics.add.existing(this.attackHitbox);
+                    this.attackHitbox.body.setAllowGravity(false);
+                }else{
+                    let hitboxY = this.sprite.y;
+                    let hitboxX = this.sprite.x + (this.ORIENTATION === 'right' ? -20 : 20);
+                    this.attackHitbox = this.scene.add.rectangle(hitboxX, hitboxY, 140, 200, 0xff0000, 0.1);
+                    this.scene.physics.add.existing(this.attackHitbox);
+                    this.attackHitbox.body.setAllowGravity(false);
+                }
+            }
+            if(this.ASSET_KEY === CHARACTER_ASSETS_KEYS.FIRE_WARRIOR){
+                if(this.POSITION === 'right'){
+                    let hitboxY = this.sprite.y;
+                    let hitboxX = this.sprite.x + (this.ORIENTATION === 'right' ? 70 : -70);
+                    this.attackHitbox = this.scene.add.rectangle(hitboxX, hitboxY, 140, 200, 0xff0000, 0.1);
+                    this.scene.physics.add.existing(this.attackHitbox);
+                    this.attackHitbox.body.setAllowGravity(false);
+                }else{
+                    let hitboxY = this.sprite.y;
+                    let hitboxX = this.sprite.x + (this.ORIENTATION === 'right' ? -70 : 70);
+                    this.attackHitbox = this.scene.add.rectangle(hitboxX, hitboxY, 140, 200, 0xff0000, 0.1);
+                    this.scene.physics.add.existing(this.attackHitbox);
+                    this.attackHitbox.body.setAllowGravity(false);
+                }
+            }
             this.isAttacking = true
             this.sprite.setVelocityX(0);
             this.playAnimation(this.ASSET_KEY.ATTACK);
 
-            if(this.POSITION === 'right'){
-                let hitboxY = this.sprite.y;
-                let hitboxX = this.sprite.x + (this.ORIENTATION === 'right' ? 20 : -20);
-                this.attackHitbox = this.scene.add.rectangle(hitboxX, hitboxY, 140, 200, 0xff0000, 0.1);
-                this.scene.physics.add.existing(this.attackHitbox);
-                this.attackHitbox.body.setAllowGravity(false);
-            }else{
-                let hitboxY = this.sprite.y;
-                let hitboxX = this.sprite.x + (this.ORIENTATION === 'right' ? -20 : 20);
-                this.attackHitbox = this.scene.add.rectangle(hitboxX, hitboxY, 140, 200, 0xff0000, 0.1);
-                this.scene.physics.add.existing(this.attackHitbox);
-                this.attackHitbox.body.setAllowGravity(false);
-            }
-            
-    
             
         }
     }
