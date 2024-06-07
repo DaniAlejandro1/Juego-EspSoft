@@ -1,6 +1,7 @@
 import { Scene } from 'phaser';
 import { BACKGROUND_ASSETS_KEYS, CHARACTER_ASSETS_KEYS } from '../../../public/assets/assets-keys';
 import { Character } from './Chara/Character';
+import { SCENE_KEYS } from './scene-keys';
 
 
 export class FightScene extends Scene{
@@ -14,11 +15,14 @@ export class FightScene extends Scene{
     }
 
     init(data){
+        this.personajes = data
         this.chara1 = data.jugador1
         this.chara2 = data.jugador2
     }
-    
+
     create(){
+        console.log(this.personajes)
+
         this.add.image(this.scale.width/2,0,BACKGROUND_ASSETS_KEYS.FOREST).setScale(2.1)
         
         this.piso = this.physics.add.staticBody(0,this.scale.height-30,this.scale.width,20)
@@ -75,6 +79,12 @@ export class FightScene extends Scene{
                     this.jugador2.recibirDanio(this.jugador1.damage)
                 }
             }
+            if(this.jugador2.isDead){
+                
+                    this.scene.start(SCENE_KEYS.GAME_OVER,{userName:"hola, cambiar",charaName: this.jugador1.ASSET_KEY.NAME, chara: this.jugador1,personajes: this.data})
+                   
+                    
+            }
            
         })
 
@@ -117,9 +127,15 @@ export class FightScene extends Scene{
 
                 this.jugador2.attack()
                 if (this.physics.overlap(this.jugador1.sprite,this.jugador2.attackHitbox)){
-    
+                    
                     this.jugador1.recibirDanio(this.jugador2.damage)
                 }
+            }
+            if(this.jugador1.isDead){
+               
+                    this.scene.start(SCENE_KEYS.GAME_OVER,{userName:"hola, cambiar",charaName: this.jugador2.ASSET_KEY.NAME, chara: this.jugador2, personajes: {personaje1:this.chara1,personaje2:this.chara2}})
+                   
+                    
             }
            
         })
@@ -133,8 +149,7 @@ export class FightScene extends Scene{
     
     update(){
        
-            
-            
+        
             
         
     }

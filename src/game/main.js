@@ -1,6 +1,7 @@
-import { Boot } from './scenes/Boot';
+
 
 import { FightScene } from './scenes/FightScene';
+import { GameOver } from './scenes/GameOver';
 import { Preloader } from './scenes/Preloader';
 import { SelectChara } from './scenes/SelectChara';
 import Phaser from 'phaser';
@@ -20,7 +21,8 @@ const config = {
     scene: [
         Preloader,
         SelectChara,
-        FightScene
+        FightScene,
+        GameOver
 
     ],
     physics: {
