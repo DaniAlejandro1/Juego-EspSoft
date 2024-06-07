@@ -9,7 +9,7 @@
             <p>Fury of Elements es un juego de pelea 1v1 que enfrenta a diversos guerreros legendarios en épicas batallas por el dominio elemental. En un bosque místico donde el fuego, el hielo y otros elementos chocan, los jugadores pueden elegir entre múltiples personajes únicos, cada uno con sus propias habilidades y estilos de combate.</p>
             <hr>
         </div>
-        <div v-if="estaLogeado">
+        <div v-if="userStore.estaLogeado">
             <button class="play-btn">Jugar</button>
         </div>
         <div v-else>
@@ -18,30 +18,17 @@
     </div>
 </template>
 
-<script>
-    import NavComponent from './components/NavComponent.vue'
-    export default {
-        components: {
-            NavComponent
-        },
-        data() {
-            return {
-                estaLogeado: false
-            }
-        },
-        methods: {
-            goToLogin() {
-                this.$router.push({path:'/login'});
-            }
-        },
-        created() {
-            if (localStorage.getItem("usuarioLogeado")) {
-                this.estaLogeado = true;
-            } else {
-                this.estaLogeado = false;
-            }
-        }
-    }
+<script setup>
+    import NavComponent from './components/NavComponent.vue';
+    import { useUserStore } from '../stores/userStore';
+    import { useRouter } from 'vue-router';
+
+    const userStore = useUserStore();
+    const router = useRouter();
+
+    const goToLogin = () => {
+        router.push({ path: '/login' });
+    };
 </script>
 
 <style scoped>

@@ -2,7 +2,7 @@
     <div class="background"></div>
     <div class="register-wrapper">
         <div class="register-container">
-            <h2 class="register-title">Registrar Usuario</h2>
+            <h2 class="register-title">Registrarse</h2>
             <div class="input-container">
                 <input type="text" placeholder="Username" v-model="username">
                 <input type="password" placeholder="Password" v-model="password">

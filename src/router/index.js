@@ -3,6 +3,7 @@ import LandingPage from '../view/LandingPage.vue'
 import LoginView from '../view/LoginView.vue'
 import RegisterView from '../view/RegisterView.vue'
 import WikiView from '../view/WikiView.vue'
+import RecordsPage from '../view/RecordsPage.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     name: 'wiki',
     path: '/wiki',
     component: WikiView
+  },
+  {
+    name: 'records',
+    path: '/records',
+    component: RecordsPage
   }
 ]
 

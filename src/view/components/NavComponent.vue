@@ -3,17 +3,23 @@
         <nav class="navbar">
             <router-link to="/" class="nav-link">Inicio</router-link>
             <router-link to="/wiki" class="nav-link">Wiki</router-link>  
-            <router-link to="#" class="nav-link">Records</router-link> 
-            <router-link to="/login" class="nav-link">Inicia Sesion</router-link>
+            <router-link to="/records" class="nav-link">Records</router-link> 
+            <router-link to="/login" class="nav-link">Iniciar Sesion</router-link>
             <router-link to="/register" class="nav-link">Registrarse</router-link> 
+            <a @click="cerrarSesion" class="nav-link" v-if="userStore.estaLogeado">Cerrar Sesion</a>
         </nav>
     </div>
 </template>
 
-<script>
-    export default {
+<script setup>
+    import { useUserStore } from '../../stores/userStore';
 
-    }
+    const userStore = useUserStore();
+
+    const cerrarSesion = () => {
+        userStore.logout();
+        this.$router.push({path:"/"});
+    };
 </script>
 
 <style scoped>

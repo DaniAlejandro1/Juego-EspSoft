@@ -15,6 +15,7 @@
 
 <script>
     import axios from 'axios'
+    import { useUserStore } from '../stores/userStore';
     export default {
         data() {
             return {
@@ -31,10 +32,11 @@
                 try {
                     let result = await axios.get(`http://localhost:3000/users?username=${this.username}&password=${this.password}`);
                     if (result.status === 200 && result.data.length > 0) {
-                        localStorage.setItem("usuarioLogeado", JSON.stringify(result.data[0]));
+                        const userStore = useUserStore();
+                        userStore.login(result.data[0].username);   
                         this.$router.push({path:"/"});
                     } else {
-                        alert("usuario no encontrado")
+                        alert("Usuario no encontrado")
                     }
                 } catch (error) {
                     console.error(error);
