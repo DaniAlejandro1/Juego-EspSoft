@@ -63,6 +63,14 @@ export class Preloader extends Scene{
 
         )
 
+        this.load.spritesheet(
+            CHARACTER_ASSETS_KEYS.FIRE_WARRIOR.RECIVE_ATTACK,
+            'public/assets/character/Fire_Warrior/states/Fire_Warrior-Sheet-Recive_Attack.png',
+            {frameWidth:31, frameHeight: 47,spacing:113}
+
+        )
+
+
 
         // Viking
         
