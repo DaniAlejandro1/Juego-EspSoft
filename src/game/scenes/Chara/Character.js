@@ -170,13 +170,22 @@ export class Character{
             this.isAttacking = true
             this.sprite.setVelocityX(0);
             this.playAnimation(this.ASSET_KEY.ATTACK);
+
+            if(this.POSITION === 'right'){
+                let hitboxY = this.sprite.y;
+                let hitboxX = this.sprite.x + (this.ORIENTATION === 'right' ? 20 : -20);
+                this.attackHitbox = this.scene.add.rectangle(hitboxX, hitboxY, 140, 200, 0xff0000, 0.1);
+                this.scene.physics.add.existing(this.attackHitbox);
+                this.attackHitbox.body.setAllowGravity(false);
+            }else{
+                let hitboxY = this.sprite.y;
+                let hitboxX = this.sprite.x + (this.ORIENTATION === 'right' ? -20 : 20);
+                this.attackHitbox = this.scene.add.rectangle(hitboxX, hitboxY, 140, 200, 0xff0000, 0.1);
+                this.scene.physics.add.existing(this.attackHitbox);
+                this.attackHitbox.body.setAllowGravity(false);
+            }
+            
     
-            let hitboxX = this.sprite.x + (this.ORIENTATION === 'right' ? -20 : 20);
-            let hitboxY = this.sprite.y;
-    
-            this.attackHitbox = this.scene.add.rectangle(hitboxX, hitboxY, 140, 200, 0xff0000, 0.1);
-            this.scene.physics.add.existing(this.attackHitbox);
-            this.attackHitbox.body.setAllowGravity(false);
             
         }
     }
