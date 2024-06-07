@@ -1,7 +1,7 @@
 <template>
     <div class="background"></div>
     <NavComponent/>
-    <div class="container">
+    <div class="scrollable">
         <h1>Fury of Elements</h1>
         <div>
             <h1>Historia</h1>
@@ -46,8 +46,9 @@
         opacity: 0.5;
         z-index: -1;
     }
-    .content-container {
-        padding: 20px;
-        margin: 20px;
+    .scrollable {
+        overflow-y: scroll;
+        height: 580px;
+        scroll-behavior: smooth;
     }
 </style>
