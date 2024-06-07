@@ -30,7 +30,7 @@ onUnmounted(() => {
         game.value.destroy(true);
         game.value = null;
     }
-    
+
 });
 
 defineExpose({ scene, game });

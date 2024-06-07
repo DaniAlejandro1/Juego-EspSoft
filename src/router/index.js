@@ -4,6 +4,7 @@ import LoginView from '../view/LoginView.vue'
 import RegisterView from '../view/RegisterView.vue'
 import WikiView from '../view/WikiView.vue'
 import RecordsPage from '../view/RecordsPage.vue'
+import PhaserGame from '../game/PhaserGame.vue'
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     name: 'records',
     path: '/records',
     component: RecordsPage
+  },
+  {
+    name: 'game',
+    path: '/game',
+    component: PhaserGame
   }
 ]
 
