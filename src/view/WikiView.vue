@@ -30,13 +30,8 @@
     </div>
 </template>
 
-<script>
+<script setup>
     import NavComponent from './components/NavComponent.vue';
-    export default {
-        components: {
-            NavComponent
-        }
-    }
 </script>
 
 <style scoped>

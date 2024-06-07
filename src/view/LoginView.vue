@@ -13,37 +13,36 @@
     </div>
 </template>
 
-<script>
-    import axios from 'axios'
+<script setup>
+    import { ref } from 'vue';
+    import axios from 'axios';
+    import { useRouter } from 'vue-router';
     import { useUserStore } from '../stores/userStore';
-    export default {
-        data() {
-            return {
-                username: '',
-                password: ''
-            }
-        },
-        methods: {
-            async iniciarSesion() {
-                if (!this.username || !this.password) {
-                    alert('Por favor, completa todos los campos.');
-                    return;
-                }
-                try {
-                    let result = await axios.get(`http://localhost:3000/users?username=${this.username}&password=${this.password}`);
-                    if (result.status === 200 && result.data.length > 0) {
-                        const userStore = useUserStore();
-                        userStore.login(result.data[0].username);   
-                        this.$router.push({path:"/"});
-                    } else {
-                        alert("Usuario no encontrado")
-                    }
-                } catch (error) {
-                    console.error(error);
-                }
-            }
+
+    const username = ref('');
+    const password = ref('');
+    const router = useRouter();
+    const userStore = useUserStore();
+
+    const iniciarSesion = async () => {
+        if (!username.value || !password.value) {
+            alert('Por favor, completa todos los campos.');
+            return;
         }
-    }
+        try {
+            let result = await axios.get(`http://localhost:3000/users?username=${username.value}&password=${password.value}`);
+
+            console.warn(result.data)
+            if (result.status == 200 && result.data.length > 0) {
+                userStore.login(result.data[0].username);
+                router.push({ path:'/'});
+            } else {
+                alert('Usuario no encontrado');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
 </script>
 
 <style scoped>

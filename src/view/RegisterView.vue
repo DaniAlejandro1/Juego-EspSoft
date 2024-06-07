@@ -13,32 +13,33 @@
     </div>
 </template>
 
-<script>
-    import axios from 'axios'
-    export default {
-        data() {
-            return {
-                username: '',
-                password: ''
-            }
-        },
-        methods: {
-            async createUser() {
-                try {
-                    let result = await axios.post("http://localhost:3000/users", {
-                        username: this.username,
-                        password: this.password
-                    })
+<script setup>
+    import { ref } from 'vue';
+    import axios from 'axios';
+    import { useRouter } from 'vue-router';
 
-                    if (result.status === 201) {
-                        this.$router.push({name:'login'});
-                    }
-                } catch (error) {
-                    console.error(error);
-                }
-            }
+    const username = ref('');
+    const password = ref('');
+    const router = useRouter();
+
+    const createUser = async () => {
+        if (!username.value || !password.value) {
+            alert('Por favor, completa todos los campos.');
+            return;
         }
-    }
+        try {
+            const result = await axios.post("http://localhost:3000/users", {
+                username: username.value,
+                password: password.value
+            });
+
+            if (result.status === 201) {
+                router.push({path:'/login'});
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
 </script>
 
 
