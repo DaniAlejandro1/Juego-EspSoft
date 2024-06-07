@@ -1,6 +1,8 @@
 import { BACKGROUND_ASSETS_KEYS } from '../../../public/assets/assets-keys';
 import { SCENE_KEYS } from './scene-keys';
 import { Scene } from 'phaser';
+import { useUserStore } from '../../stores/userStore';
+import { storeToRefs } from 'pinia';
 
 export class GameOver extends Scene{
     constructor (){
@@ -9,12 +11,16 @@ export class GameOver extends Scene{
     }
     init(data){
         this.personajes = data.personajes
-        this.userName = data.userName
         this.charaName = data.charaName
         this.currentHealth = data.chara.currentHealth
     }
     
     create (){
+        const userStore = useUserStore();
+        const {username} = storeToRefs(userStore);
+
+        console.log(username.value)
+        this.userName = username.value
         console.log(this.personajes)   
         this.add.image(this.scale.width/2,0,BACKGROUND_ASSETS_KEYS.FOREST).setScale(2.1)
 

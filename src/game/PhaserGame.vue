@@ -37,5 +37,19 @@ defineExpose({ scene, game });
 </script>
 
 <template>
-    <div id="game-container"></div>
+    <div class="contenedor" id="game-container"></div>
 </template>
+
+<style scoped>
+   * {
+    padding: 0;
+    margin: 0;
+   }
+   body {
+    padding: 0;
+   }
+   .contenedor {
+    width: 100%;
+    padding: 0;
+   }
+</style>
