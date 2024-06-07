@@ -13,6 +13,11 @@ export class FightScene extends Scene{
 
     }
 
+    init(data){
+        this.chara1 = data.jugador1
+        this.chara2 = data.jugador2
+    }
+    
     create(){
         this.add.image(this.scale.width/2,0,BACKGROUND_ASSETS_KEYS.FOREST).setScale(2.1)
         
@@ -24,50 +29,50 @@ export class FightScene extends Scene{
         //this.viking2 = new Character(this,1400,this.scale.height-120,CHARACTER_ASSETS_KEYS.FIRE_WARRIOR,100,100,10,'right')
 
         
-        this.viking = new Character(this,300,this.scale.height-120,CHARACTER_ASSETS_KEYS.VIKING,100,100,10,'left');
-        this.viking2 = new Character(this,1400,this.scale.height-120,CHARACTER_ASSETS_KEYS.FIRE_WARRIOR,100,100,10,'right')
+        this.jugador1 = new Character(this,300,this.scale.height-120,this.chara1,100,100,10,'left');
+        this.jugador2 = new Character(this,1400,this.scale.height-120,this.chara2,100,100,10,'right')
 
-        this.physics.add.collider(this.viking.sprite,this.piso)
-        this.physics.add.collider(this.viking2.sprite,this.piso)
+        this.physics.add.collider(this.jugador1.sprite,this.piso)
+        this.physics.add.collider(this.jugador2.sprite,this.piso)
         
         
 
         this.add.image(this.scale.width/2,0,BACKGROUND_ASSETS_KEYS.FLOOR).setScale(2.1)
         
         this.input.keyboard.on('keydown-D',()=>{
-            if(!this.viking.isDead){
+            if(!this.jugador1.isDead){
 
-                this.viking.ORIENTATION = 'left'
-                this.viking.run()
+                this.jugador1.ORIENTATION = 'left'
+                this.jugador1.run()
             }
             
         })
 
         this.input.keyboard.on('keyup-D',()=>{
-            if(!this.viking.isDead)
-            this.viking.idle()
+            if(!this.jugador1.isDead)
+            this.jugador1.idle()
         })
 
         this.input.keyboard.on('keydown-A',()=>{
-            if(!this.viking.isDead){
-                this.viking.ORIENTATION = 'right'
-                this.viking.run()
+            if(!this.jugador1.isDead){
+                this.jugador1.ORIENTATION = 'right'
+                this.jugador1.run()
 
             }
         })
 
         this.input.keyboard.on('keyup-A',()=>{
-            if(!this.viking.isDead)
-            this.viking.idle()
+            if(!this.jugador1.isDead)
+            this.jugador1.idle()
         })
 
         
         this.input.keyboard.on('keydown-G',()=>{
-            if(!this.viking.isDead){
+            if(!this.jugador1.isDead){
 
-                this.viking.attack()
-                if(this.physics.collide(this.viking.attackHitbox,this.viking2.sprite)){
-                    this.viking2.recibirDanio(this.viking.damage)
+                this.jugador1.attack()
+                if(this.physics.collide(this.jugador1.attackHitbox,this.jugador2.sprite)){
+                    this.jugador2.recibirDanio(this.jugador1.damage)
                 }
             }
            
@@ -78,42 +83,42 @@ export class FightScene extends Scene{
         // Movimientos del segundo personaje
         this.input.keyboard.on('keydown-LEFT',()=>{
 
-            if(!this.viking2.isDead){
+            if(!this.jugador2.isDead){
 
-                this.viking2.ORIENTATION = 'left'
-                this.viking2.run()
+                this.jugador2.ORIENTATION = 'left'
+                this.jugador2.run()
             }
             
         })
 
         this.input.keyboard.on('keyup-LEFT',()=>{
-            if(!this.viking2.isDead)this.viking2.idle()
+            if(!this.jugador2.isDead)this.jugador2.idle()
         })
 
         this.input.keyboard.on('keydown-RIGHT',()=>{
-            if(!this.viking2.isDead){
+            if(!this.jugador2.isDead){
 
-                this.viking2.ORIENTATION = 'right'
-                this.viking2.run()
+                this.jugador2.ORIENTATION = 'right'
+                this.jugador2.run()
             }
         })
 
         this.input.keyboard.on('keyup-RIGHT',()=>{
-            if(!this.viking2.isDead){
+            if(!this.jugador2.isDead){
 
-                this.viking2.idle()
+                this.jugador2.idle()
             }
         })
 
         
 
         this.input.keyboard.on('keydown-M',()=>{
-            if(!this.viking2.isDead){
+            if(!this.jugador2.isDead){
 
-                this.viking2.attack()
-                if (this.physics.overlap(this.viking.sprite,this.viking2.attackHitbox)){
+                this.jugador2.attack()
+                if (this.physics.overlap(this.jugador1.sprite,this.jugador2.attackHitbox)){
     
-                    this.viking.recibirDanio(this.viking2.damage)
+                    this.jugador1.recibirDanio(this.jugador2.damage)
                 }
             }
            

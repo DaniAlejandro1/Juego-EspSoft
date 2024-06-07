@@ -264,7 +264,7 @@ export class Character{
         
         } else{
             //  Agrega el nombre del personaje ensima de la barra de vida
-            this.scene.add.text(1450, 10,this.ASSET_KEY.NAME,{
+            this.scene.add.text(1340, 10,this.ASSET_KEY.NAME,{
                 fontSize: 30
             })
             // Contorno de la barra de salud
