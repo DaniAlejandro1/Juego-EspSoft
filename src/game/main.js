@@ -2,12 +2,9 @@ import { Boot } from './scenes/Boot';
 
 import { FightScene } from './scenes/FightScene';
 import { Preloader } from './scenes/Preloader';
+import { SelectChara } from './scenes/SelectChara';
 import Phaser from 'phaser';
 
-
-
-// Find out more information about the Game Config at:
-// https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
 const config = {
     type: Phaser.CANVAS,
     pixelArt: true,
@@ -22,6 +19,7 @@ const config = {
     },
     scene: [
         Preloader,
+        SelectChara,
         FightScene
 
     ],

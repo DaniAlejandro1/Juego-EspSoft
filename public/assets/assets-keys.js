@@ -6,6 +6,7 @@ export const BACKGROUND_ASSETS_KEYS = Object.freeze({
 export const CHARACTER_ASSETS_KEYS = Object.freeze({
     VIKING: {
         NAME: "VIKING",
+        PORTRAIT:"VIKING",
         IDLE: 'VIKING_IDLE',
         RUN: 'VIKING_RUN',
         ATTACK: 'VIKING_ATTACT',
@@ -18,6 +19,7 @@ export const CHARACTER_ASSETS_KEYS = Object.freeze({
 
     FIRE_WARRIOR: {
         NAME: 'FIRE WARRIOR',
+        PORTRAIT: 'FIRE_WARRIOR',
         IDLE: 'FIRE_WARRIOR_IDLE',
         RUN: 'FIRE_WARRIOR_RUN',
         ATTACK: 'FIRE_WARRIOR_ATTACT',

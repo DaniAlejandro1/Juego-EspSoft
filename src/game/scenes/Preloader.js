@@ -43,6 +43,16 @@ export class Preloader extends Scene{
         // Character assets
         
         // Fire Warrior 
+        this.load.image(
+            CHARACTER_ASSETS_KEYS.VIKING.PORTRAIT,
+            'public/assets/character/Viking/Viking Portrait.png'
+        )
+
+        this.load.image(
+            CHARACTER_ASSETS_KEYS.FIRE_WARRIOR.PORTRAIT,
+            'public/assets/character/Viking/Viking Portrait.png'
+        )
+
         this.load.spritesheet(
             CHARACTER_ASSETS_KEYS.FIRE_WARRIOR.IDLE,
             'public/assets/character/Fire_Warrior/states/Fire_Warrior-Sheet-Idle.png',
@@ -124,6 +134,6 @@ export class Preloader extends Scene{
     }
 
     create(){
-        this.scene.start(SCENE_KEYS.FIGHT_SCENE)
+        this.scene.start(SCENE_KEYS.SELECT_CHARA)
     }
 }
