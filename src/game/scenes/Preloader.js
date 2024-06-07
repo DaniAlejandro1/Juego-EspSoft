@@ -45,8 +45,21 @@ export class Preloader extends Scene{
         // Fire Warrior 
         this.load.spritesheet(
             CHARACTER_ASSETS_KEYS.FIRE_WARRIOR.IDLE,
-            'public/assets/character/Fire_Warrior/states/Fire_WarriorFireSword-Sheet-Idle.png',
-            {frameWidth:31, frameHeight: 45,spacing: 113}
+            'public/assets/character/Fire_Warrior/states/Fire_Warrior-Sheet-Idle.png',
+            {frameWidth:31, frameHeight: 47,spacing: 113}
+
+        )
+
+        this.load.spritesheet(
+            CHARACTER_ASSETS_KEYS.FIRE_WARRIOR.RUN,
+            'public/assets/character/Fire_Warrior/states/Fire_Warrior-Sheet-Run.png',
+            {frameWidth:33, frameHeight: 47,spacing:111}
+
+        )
+        this.load.spritesheet(
+            CHARACTER_ASSETS_KEYS.FIRE_WARRIOR.ATTACK,
+            'public/assets/character/Fire_Warrior/states/Fire_Warrior-Sheet-Attack.png',
+            {frameWidth:70, frameHeight: 47,spacing:80}
 
         )
 
