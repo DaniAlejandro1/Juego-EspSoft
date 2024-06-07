@@ -6,6 +6,8 @@ export class Character{
 
     constructor(scene,x,y,assetKey,health,currentHealth,damage,position){
 
+
+        
         this.scene = scene
         this.x = x
         this.y = y
@@ -15,6 +17,8 @@ export class Character{
         this.damage = damage
         this.POSITION = position
         this.ORIENTATION = position
+
+        this.hasPlayedFinalSound = false;
 
         let hitboxX = this.x + (this.ORIENTATION === 'right' ? -20 : 20);
         let hitboxY = this.y;
@@ -117,7 +121,7 @@ export class Character{
         if(!this.isAttacking ){
             this.isJumping = false
             this.isRuning = false
-            this.isAttacking = false
+           
             this.sprite.setVelocityX(0);
             this.sprite.play(this.ASSET_KEY.IDLE);
         }else if(this.isAttacking){
@@ -208,7 +212,10 @@ export class Character{
     defeated(){
         if(!this.isDead){
 
-            this.isDead = true        
+            this.isDead = true    
+            this.sprite.body.enable = false
+
+             
             this.playAnimation(this.ASSET_KEY.DEFEATED)
         }
     }

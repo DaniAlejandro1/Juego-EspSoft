@@ -3,6 +3,19 @@ export const BACKGROUND_ASSETS_KEYS = Object.freeze({
     FLOOR: 'FLOOR'
 })
 
+export const SOUND_EFFECTS = Object.freeze({
+    VIKING: {
+        
+    },
+    FIRE_WARRIOR: {
+        GOLPE: "GOLPE_KATANA",
+        GOLPE_FINAL: "GOLPE_FINAL_KATANA"
+    },
+    FONDO:{
+        AMBIENTAL: "AMBIENTAL"
+    }
+})
+
 export const CHARACTER_ASSETS_KEYS = Object.freeze({
     VIKING: {
         NAME: "VIKING",
@@ -12,7 +25,12 @@ export const CHARACTER_ASSETS_KEYS = Object.freeze({
         ATTACK: 'VIKING_ATTACT',
         JUMP: 'VIKING_JUMP',
         RECIVE_ATTACK: 'VIKING_RECIVE_ATTACK',
-        DEFEATED: 'VIKING_DEFEATED'
+        DEFEATED: 'VIKING_DEFEATED',
+        EFFECTS:{
+            GOLPE: "GOLPE_HACHA",
+            GOLPE_FINAL: "GOLPE_FINAL_HACHA"
+        }
+        
         
     },
         
@@ -25,7 +43,11 @@ export const CHARACTER_ASSETS_KEYS = Object.freeze({
         ATTACK: 'FIRE_WARRIOR_ATTACT',
         JUMP: 'FIRE_WARRIOR_JUMP',
         RECIVE_ATTACK: 'FIRE_WARRIOR_RECIVE_ATTACK',
-        DEFEATED: 'FIRE_WARRIOR_DEFEATED'
+        DEFEATED: 'FIRE_WARRIOR_DEFEATED',
+        EFFECTS:{
+            GOLPE: "GOLPE_KATANA",
+            GOLPE_FINAL: "GOLPE_FINAL_KATANA"
+        }
     }
 
 })

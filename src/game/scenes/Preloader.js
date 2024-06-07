@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import { Scene } from "phaser";
 import { SCENE_KEYS } from "./scene-keys";
-import { BACKGROUND_ASSETS_KEYS, CHARACTER_ASSETS_KEYS, HEALTHBAR_ASSETS } from "../../../public/assets/assets-keys";
+import { BACKGROUND_ASSETS_KEYS, CHARACTER_ASSETS_KEYS, HEALTHBAR_ASSETS, SOUND_EFFECTS } from "../../../public/assets/assets-keys";
 
 export class Preloader extends Scene{
     constructor(){
@@ -24,6 +24,13 @@ export class Preloader extends Scene{
             BACKGROUND_ASSETS_KEYS.FLOOR,
             '/assets/background/Layer_0000_9.png'
         )
+
+        // Musica ambiental
+
+        this.load.audio(
+            SOUND_EFFECTS.FONDO.AMBIENTAL,
+            'public/assets/audios/efectos/musicaAmbiente.mp3'
+        )
         
 
         // HealtBar
@@ -43,7 +50,23 @@ export class Preloader extends Scene{
         // Character assets
         
         // Fire Warrior 
+        
+        // Efectos de sonido
+        // Golpe
+        this.load.audio(
+            CHARACTER_ASSETS_KEYS.FIRE_WARRIOR.EFFECTS.GOLPE,
+            'public/assets/audios/efectos/fire_warrior/golpe de katana.mp3'
+        )
+
+        // Golpe Final
+        this.load.audio(
+             CHARACTER_ASSETS_KEYS.FIRE_WARRIOR.EFFECTS.GOLPE_FINAL,
+            'public/assets/audios/efectos/fire_warrior/golpeKatanaFinal.mp3'
+        )
+
+
        
+
         this.load.image(
             CHARACTER_ASSETS_KEYS.FIRE_WARRIOR.PORTRAIT,
             'public/assets/character/Fire_Warrior/Fire_Warrior_Portrait.png'
@@ -86,6 +109,20 @@ export class Preloader extends Scene{
 
 
         // Viking
+
+         // Efectos de Sonido
+
+        // Golpe Normal
+        this.load.audio(
+            CHARACTER_ASSETS_KEYS.VIKING.EFFECTS.GOLPE,
+            'public/assets/audios/efectos/viking/golpe.mp3',
+        )
+
+        // Golpe Final
+        this.load.audio(
+            CHARACTER_ASSETS_KEYS.VIKING.EFFECTS.GOLPE_FINAL,
+            'public/assets/audios/efectos/viking/golpeFinal.mp3'
+        )
 
         this.load.image(
             CHARACTER_ASSETS_KEYS.VIKING.PORTRAIT,
