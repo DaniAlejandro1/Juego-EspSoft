@@ -70,6 +70,13 @@ export class Preloader extends Scene{
 
         )
 
+        this.load.spritesheet(
+            CHARACTER_ASSETS_KEYS.FIRE_WARRIOR.DEFEATED,
+            'public/assets/character/Fire_Warrior/states/Fire_Warrior-Sheet-Defeated.png',
+            {frameWidth:50, frameHeight: 47,spacing:92}
+
+        )
+
 
 
         // Viking
