@@ -38,7 +38,7 @@ export class Character{
         this.isAttacking = false
         this.isJumping = false
         this.isIdle = true
-        this.isDead = false
+        this.isDead = false 
     }
 
     createAnimation(scene){
